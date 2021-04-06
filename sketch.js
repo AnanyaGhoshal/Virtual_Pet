@@ -55,19 +55,26 @@ function draw() {
  
   //write code to display text lastFed time here
 
-  if(lastFed>=12){
+  let h = hour();
 
+  if(h<12){
+  fill(0);
+  text('LastFed Time: '+h+ ' AM',350,30);}else if(h>=12){
     fill(0);
-    text("Lastfeed Time: 12 PM", 320,35);
-
-  }else if(lastFed>0){
-   fill(0);
-   text("Lastfeed Time: 12 AM ", 320,35);
-  }
-
+    text('LastFed Time: '+h+ ' PM',350,30);}
+  
+  
   
 
+ /*if(lastFed>=12){
  
+   fill(0);
+   text("Lastfeed Time: 12 PM", 320,35);
+ 
+ }else if(lastFed>0){
+  fill(0);
+  text("Lastfeed Time: 12 AM ", 320,35);
+  } */
   drawSprites();
 }
 
@@ -89,12 +96,11 @@ function feedDog(){
   })
 
   var foodStock_val = foodObj.getFoodStock();
-if(foodStock_val<0){
+if(foodStock_val<=0){
   foodObj.updateFoodStock(foodStock_val*0);
 }else{
-  foodObj.updateFoodStock(foodStock_val-0);
+  foodObj.updateFoodStock(foodStock_val*1);
 }
-
 
 }
 
